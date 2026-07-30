@@ -135,7 +135,7 @@ if command -v atuin &>/dev/null; then
   skip "atuin 이미 설치됨"
 else
   info "atuin 설치 중..."
-  curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+  curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh -s -- --non-interactive
   ok "atuin 설치 완료"
 fi
 
