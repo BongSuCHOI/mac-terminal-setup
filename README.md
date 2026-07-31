@@ -11,6 +11,7 @@ macOS 터미널 환경을 한 번에 설정하는 설치 스크립트입니다.
 | [Noto Sans Mono CJK KR](https://fonts.google.com/noto) | 한글 고정폭 폰트 (fallback) |
 | [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) | 회색 히스토리 자동 제안 |
 | [atuin](https://atuin.sh) | 히스토리 검색 (비로그인, 로컬 전용) |
+| [herdr](https://herdr.dev) | AI 에이전트 멀티플렉서 (tmux 대체) |
 
 ## 설치
 
@@ -55,6 +56,13 @@ copy-on-select = clipboard
 - 데몬 활성화
 - 검색 모드: daemon-fuzzy
 
+## herdr 설정
+
+- 테마: terminal (호스트 터미널 색상 상속)
+- 프리픽스: `Ctrl+;`
+- 에이전트 세션 복원 활성화
+- Kitty graphics, pane history, CJK IME 프리픽스 전환 (experimental)
+
 ## 요구 사항
 
 - macOS
@@ -63,4 +71,4 @@ copy-on-select = clipboard
 ## 참고
 
 - 모든 단계는 멱등(idempotent)합니다. 이미 설치된 항목은 건너뜁니다.
-- 기존 Ghostty/atuin 설정은 실행 전 자동 백업됩니다.
+- 기존 Ghostty/atuin/herdr 설정은 실행 전 자동 백업됩니다.

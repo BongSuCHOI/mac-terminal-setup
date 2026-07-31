@@ -3,7 +3,7 @@ set -euo pipefail
 
 # ============================================================
 # dotfiles installer
-# Ghostty + fonts + zsh-autosuggestions + atuin
+# Ghostty + fonts + zsh-autosuggestions + atuin + herdr
 # Usage: curl -fsSL https://raw.githubusercontent.com/.../install.sh | bash
 # ============================================================
 
@@ -12,6 +12,8 @@ GHOSTTY_CONFIG_DIR="$HOME/.config/ghostty"
 GHOSTTY_CONFIG="$GHOSTTY_CONFIG_DIR/config"
 ATUIN_CONFIG_DIR="$HOME/.config/atuin"
 ATUIN_CONFIG="$ATUIN_CONFIG_DIR/config.toml"
+HERDR_CONFIG_DIR="$HOME/.config/herdr"
+HERDR_CONFIG="$HERDR_CONFIG_DIR/config.toml"
 ZSHRC="$HOME/.zshrc"
 
 GREEN='\033[0;32m'
@@ -176,6 +178,49 @@ else
   } >> "$ZSHRC"
   ok ".zshrc에 atuin 추가"
 fi
+
+# ------------------------------------------------------------
+# 6. herdr
+# ------------------------------------------------------------
+info "herdr 확인 중..."
+
+if command -v herdr &>/dev/null; then
+  skip "herdr 이미 설치됨"
+else
+  info "herdr 설치 중..."
+  curl -fsSL https://herdr.dev/install.sh | sh
+  ok "herdr 설치 완료"
+fi
+
+# herdr 설정
+info "herdr 설정 적용 중..."
+mkdir -p "$HERDR_CONFIG_DIR"
+
+if [[ -f "$HERDR_CONFIG" ]]; then
+  cp "$HERDR_CONFIG" "$HERDR_CONFIG.bak.$(date +%Y%m%d%H%M%S)"
+  info "기존 herdr 설정 백업: $HERDR_CONFIG.bak.*"
+fi
+
+cat > "$HERDR_CONFIG" <<'EOF'
+# herdr configuration
+
+[theme]
+name = "terminal"
+auto_switch = false
+
+[keys]
+prefix = "ctrl+;"
+
+[session]
+resume_agents_on_restore = true
+
+[experimental]
+kitty_graphics = true
+pane_history = true
+switch_ascii_input_source_in_prefix = true
+EOF
+
+ok "herdr 설정 완료"
 
 # ------------------------------------------------------------
 # 완료
