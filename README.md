@@ -16,13 +16,13 @@ macOS 터미널 환경을 한 번에 설정하는 설치 스크립트입니다.
 ## 설치
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/choibongsu/mac-terminal-setup/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BongSuCHOI/mac-terminal-setup/main/install.sh | bash
 ```
 
 또는 직접 실행:
 
 ```bash
-git clone https://github.com/choibongsu/mac-terminal-setup.git
+git clone https://github.com/BongSuCHOI/mac-terminal-setup.git
 cd mac-terminal-setup
 ./install.sh
 ```
